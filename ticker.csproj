@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TickerData\**" />
+    <Compile Remove="TickerLogic\**" />
+    <EmbeddedResource Remove="TickerData\**" />
+    <EmbeddedResource Remove="TickerLogic\**" />
+    <None Remove="TickerData\**" />
+    <None Remove="TickerLogic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="TickerData\TickerData.csproj" />
+    <ProjectReference Include="TickerLogic\TickerLogic.csproj" />
+  </ItemGroup>
+
+</Project>
