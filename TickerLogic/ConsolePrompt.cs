@@ -16,7 +16,7 @@ namespace TickerLogic
             {
                 Console.Write("The Account ID should be a short, easy-to-type filename.\n> ");
                 acct.Id = Console.ReadLine();
-                var pathname = Path.Join(config.DataPath, $"{acct.Id}.json");
+                var pathname = Path.Join(config.DataPath, $"{acct.Id}.tikr");
                 if (File.Exists(pathname) && ConsoleInput.GetOneKey("That account already exists. Overwrite?", "YN").Equals("N")) continue;
                 break;
             }

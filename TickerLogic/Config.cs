@@ -14,7 +14,7 @@ namespace TickerLogic
         private static JsonSerializerOptions jsonOpts = new JsonSerializerOptions { WriteIndented = true };
 
         /// <summary>
-        /// Location of the ticker account files (which are named "Account.Id.json")
+        /// Location of the ticker account files (which are named "Account.Id.tikr")
         /// </summary>
         public string DataPath { get; set; } = string.Empty;
 
@@ -77,7 +77,7 @@ namespace TickerLogic
             if (!Directory.Exists(DataPath))
                 throw new InvalidOperationException($"Unable to find data path: {DataPath}");
 
-            var pathname = Path.Join(DataPath, $"{ActiveAccountId}.json");
+            var pathname = Path.Join(DataPath, $"{ActiveAccountId}.tikr");
             if(!File.Exists(pathname))
                 throw new InvalidOperationException($"Unable to find account data file: {pathname}");
 
@@ -93,7 +93,7 @@ namespace TickerLogic
             if (!Directory.Exists(DataPath))
                 throw new InvalidOperationException($"Unable to find data path: {DataPath}");
 
-            var pathname = Path.Join(DataPath, $"{acct.Id}.json");
+            var pathname = Path.Join(DataPath, $"{acct.Id}.tikr");
             var json = JsonSerializer.Serialize(acct, jsonOpts);
             await File.WriteAllTextAsync(pathname, json);
             Console.WriteLine($"Account saved: {pathname}");

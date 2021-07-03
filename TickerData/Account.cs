@@ -9,7 +9,7 @@ namespace TickerData
     {
         /// <summary>
         /// Short identifier assigned to the account (for convenience). Must be a valid
-        /// filename when combined with a ".json" extension.
+        /// filename when combined with a ".tikr" extension.
         /// </summary>
         public string Id { get; set; } = string.Empty;
 

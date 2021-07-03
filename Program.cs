@@ -68,8 +68,7 @@ namespace ticker
                         }
 
                         var id = string.Join(' ', args, 1, args.Length - 1);
-                        if (id.Equals("ticker")) ExitWriteLine("To avoid conflicts with the application config file, \"ticker\" is not permitted.");
-                        var pathname = Path.Join(config.DataPath, $"{id}.json");
+                        var pathname = Path.Join(config.DataPath, $"{id}.tikr");
                         if (!File.Exists(pathname)) ExitWriteLine($"The requested account could not be found:\n{pathname}");
                         config.ActiveAccountId = id;
                         await config.Write();
@@ -144,6 +143,8 @@ namespace ticker
                 // [symbol] ... dump transaction history of the symbol
                 default:
                     {
+                        if (args[0].StartsWith('-')) ExitWriteLine($"Use -? for help, {args[0]} is not a valid switch.");
+
                         var acct = await config.GetActiveAccount();
                         ConsoleDisplay.SymbolHistory(acct, args[0].ToUpper());
                         break;
